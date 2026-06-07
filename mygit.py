@@ -8,7 +8,7 @@ import time
 import zlib
 from pathlib import Path
 
-GIT_DIR_NAME = ".cgit"
+GIT_DIR_NAME = ".mygit"
 
 
 def repo_path() -> Path:
