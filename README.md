@@ -1,4 +1,4 @@
-# MyGit
+# MyGitclone
 
 A minimal Git clone built entirely in Python as a learning project to understand how version control systems work behind the scenes.
 
