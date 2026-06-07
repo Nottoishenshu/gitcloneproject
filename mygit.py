@@ -12,7 +12,14 @@ GIT_DIR_NAME = ".mygit"
 
 
 def repo_path() -> Path:
-    return Path.cwd() / GIT_DIR_NAME
+    cwd = Path.cwd()
+    dot_git_dir = cwd / GIT_DIR_NAME
+    legacy_git_dir = cwd / "mygit"
+    if dot_git_dir.is_dir():
+        return dot_git_dir
+    if legacy_git_dir.is_dir():
+        return legacy_git_dir
+    return dot_git_dir
 
 
 def repo_exists() -> bool:
@@ -104,7 +111,7 @@ def ls_tree_object(tree_sha: str) -> None:
 
 
 def is_ignored(path: Path) -> bool:
-    return any(part == GIT_DIR_NAME for part in path.parts)
+    return any(part in {GIT_DIR_NAME, "mygit"} for part in path.parts)
 
 
 def write_tree(directory: Path) -> str:
